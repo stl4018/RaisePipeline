@@ -13,7 +13,7 @@ func TestParser(t *testing.T) {
 	if err != nil {
 		t.Errorf("Error was not nil: %v", err)
 	}
-	if parseNoCommands.len() != 0 {
+	if len(parseNoCommands) != 0 {
 		t.Errorf("Expected no commands, got %v instead", parseNoCommands)
 	}
 
@@ -23,8 +23,7 @@ func TestParser(t *testing.T) {
 	if err != nil {
 		t.Errorf("Error was not nil: %v", err)
 	}
-	if parseNoAltCommands.len() != 3 || parseNoAltCommands[0] != "pull=somewhere.com"
-			|| parseNoAltCommands[1] != "build" || parseNoAltCommands[2] != "launch"  {
+	if len(parseNoAltCommands) != 3 || parseNoAltCommands[0] != "pull=somewhere.com" || parseNoAltCommands[1] != "build" || parseNoAltCommands[2] != "launch" {
 		t.Errorf("Expected ordered no-alt commands, got %v instead", parseNoAltCommands)
 	}
 
@@ -34,32 +33,30 @@ func TestParser(t *testing.T) {
 	if err != nil {
 		t.Errorf("Error was not nil: %v", err)
 	}
-	if parseNoAltCommands.len() != 3 || parseNoAltCommands[0] != "pull=somewhere.com"
-			|| parseNoAltCommands[1] != "launch" || parseNoAltCommands[2] != "build"  {
+	if len(parseNoAltCommands) != 3 || parseNoAltCommands[0] != "pull=somewhere.com" || parseNoAltCommands[1] != "launch" || parseNoAltCommands[2] != "build" {
 		t.Errorf("Expected un-ordered no-alt commands, got %v instead", parseNoAltCommands)
 	}
 
 	// Test alt commands
 	os.Args = []string{"./raise", "-AltPull=somewhere.com", "-AltBuildAndLaunch"}
-	parseAltCommands, err = RaiseParser()
+	parseAltCommands, err := RaiseParser()
 	if err != nil {
 		t.Errorf("Error was not nil: %v", err)
 	}
-	if parseAltCommands.len() != 3 || parseAltCommands[0] != "pull=somewhere.com"
-			|| parseAltCommands[1] != "launch" || parseAltCommands[2] != "build"  {
+	if len(parseAltCommands) != 3 || parseAltCommands[0] != "pull=somewhere.com" || parseAltCommands[1] != "build" || parseAltCommands[2] != "launch" {
 		t.Errorf("Expected ordered alt commands, got %v instead", parseAltCommands)
 	}
 
 	// Test multi-language commands
 	os.Args = []string{"./raise", "-AltPull=somewhere.com", "-build"}
-	parseAltCommands, err = RaiseParser()
+	_, err = RaiseParser()
 	if err == nil {
 		t.Errorf("Expected error but got nil")
 	}
 
 	// Test illegible commands
 	os.Args = []string{"./raise", "-AltPull=somewhere.com", "-oogabooga"}
-	parseAltCommands, err = RaiseParser()
+	_, err = RaiseParser()
 	if err == nil {
 		t.Errorf("Expected error but got nil")
 	}
@@ -83,7 +80,7 @@ func TestRouter(t *testing.T) {
 	// Test unordered commands
 	commands = []string{"-launch", "-build"}
 	err = RaiseRouter(commands)
-	if err != nil {
+	if err == nil {
 		t.Errorf("Expected error but got nil")
 	}
 

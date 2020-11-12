@@ -45,4 +45,4 @@ Step 3: Write the program
 
 - Step 4: Results
 - Initial version done; revising
-- Tests not passed
+- Tests not passed; tests and code updated

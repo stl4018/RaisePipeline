@@ -1,23 +1,30 @@
-Specs:
+# RaisePipeline
+A sample pipeline/automation controller system intended to simulate how a real pipeline/automation controller could work
+
+## Specs:
 
 To run program:
+```bash
 go build
 ./raise_project
+```
 
 Command Line Arguments (simulating a script):
+```bash
 -pull=somewhere.com     //Specify a place to pull from using -pull
 -build                  //build program
 -launch                 //launch program
 -AltPull=somewhere.com  //Same as pull
 -AltBuildAndLaunch      //build and launch program
+```
 
 Note: Alt and non-alt command line arguments are intended to simulate two different languages--so you may only use commands from the same language. Also, commands should be in order of pull -> build -> launch, but not all are necessary
 
-Issues with code:
-- It allows for multiple identical commands in a row
-- Different script languages require hardcoding
+## Issues with code:
+- It allows for multiple, identical commands to be executed in a row
+- The script language parser require hardcoding of foreign languages
 
-Thought process:
+## Thought process:
 Step 1: See if I understand the assignment correctly
 - We want a pipeline than can execute scripts written in other languages
 - It interprets the scripts from other languages and executes tasks based on that

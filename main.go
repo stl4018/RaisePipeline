@@ -38,7 +38,7 @@ func main() {
 /**********************************************
 // RaiseParser: Takes command line arguments and parses the pipeline commands
 // Input: None. (Uses os.Args)
-// Output: String array of commands, errors
+// Output: String array of commands, error thrown if invalid command line argument entered
 ***********************************************/
 func RaiseParser() (commands []string, err error) {
 	isNonAlt := false
@@ -91,7 +91,7 @@ func RaiseParser() (commands []string, err error) {
 /**************************************************
 // Raise Router: Executes pipeline functionss for a given set of commands
 // Input: String array of commands
-// Output: Error thrown
+// Output: Error thrown if a command is invalid or commands are in an improper order
 **************************************************/
 func RaiseRouter(commands []string) (err error) {
 	didBuild := false

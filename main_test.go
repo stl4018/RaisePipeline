@@ -71,7 +71,7 @@ func TestRouter(t *testing.T) {
 	}
 
 	// Test ordered commands
-	commands = []string{"-build", "-launch"}
+	commands = []string{"build", "launch"}
 	err = RaiseRouter(commands)
 	if err != nil {
 		t.Errorf("Expected no error but got %v", err)

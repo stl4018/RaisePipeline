@@ -12,15 +12,15 @@ go build
 Command Line Arguments (simulating a script):
 ```bash
 -pull=somewhere.com     //Specify a place to pull from using -pull
--build                  //build program
--launch                 //launch program
--AltPull=somewhere.com  //Same as pull
--AltBuildAndLaunch      //build and launch program
+-build                  //Build program
+-launch                 //Launch program
+-AltPull=somewhere.com  //Same as pull, simulating alternate language
+-AltBuildAndLaunch      //Build and launch program, simulating alternate language
 ```
 
-Note: Alt and non-alt command line arguments are intended to simulate two different languages--so you may only use commands from the same language. Also, commands should be in order of pull -> build -> launch, but not all are necessary
+Note: Alt and non-alt command line arguments are intended to simulate two different languages--so you may only use commands from the same language. Also, commands should be in order of pull -> build -> launch, but not all are necessary. Finally, at least one command is required.
 
-## Issues with code:
+## Current concerns with code:
 - It allows for multiple, identical commands to be executed in a row
 - The script language parser require hardcoding of foreign languages
 
@@ -43,6 +43,6 @@ Step 3: Write the program
 - Messaging Katherine for further clarification
 - See code
 
-- Step 4: Results
+Step 4: Results
 - Initial version done; revising
 - Tests not passed; tests and code updated
